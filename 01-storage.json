@@ -6,11 +6,11 @@
     "variables": {},
     "resources": [
         {
-            "name": "Jinstorageaccount1210",
+            "name": "jinstorageaccount1210",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-04-01",
             "tags": {
-                "displayName": "Jinstorageaccount1210"
+                "displayName": "jinstorageaccount1210"
             },
             "location": "[resourceGroup().location]",
             "kind": "StorageV2",
