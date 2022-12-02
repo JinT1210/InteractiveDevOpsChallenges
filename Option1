@@ -1,0 +1,149 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworkName": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter Virtual Network name"
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter Subnet name"
+            }
+        },
+        "virtualnetworkAddressPrefixes": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter vNet Address Prefixes x.x.x.x/x"
+            }
+        },
+        "subnetAddressPrefixes": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter Subnet Address Prefixes x.x.x.x/x"
+            }
+        },
+        "publicIPAddressID": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter Public IP Address ID"
+            }
+        },
+        "networksecuritygroupID": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter Network Security Group ID"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('virtualNetworkName')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('virtualNetworkName')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('virtualnetworkAddressPrefixes')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnetAddressPrefixes')]"
+                        }
+                    }
+                ]
+            }
+        },
+     {
+        "name": "[parameters('publicIPAddressID')]",
+        "type": "Microsoft.Network/publicIPAddresses",
+        "apiVersion": "2020-11-01",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "[parameters('publicIPAddressID')]"
+        },
+        "properties": {
+            "publicIPAllocationMethod": "Dynamic"
+        }
+     },
+    {
+        "name": "[parameters('networksecuritygroupID')]",
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "apiVersion": "2020-11-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "securityRules": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "description": "description",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "22",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 1000,
+                        "direction": "Inbound"
+                    }
+                },
+                            {
+                    "name": "HTTP",
+                    "properties": {
+                        "description": "description",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "80",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 999,
+                        "direction": "Inbound"
+                    }
+                },
+                            {
+                    "name": "HTTPS",
+                    "properties": {
+                        "description": "description",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "443",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 998,
+                        "direction": "Inbound"
+                    }
+                },
+                            {
+                    "name": "RDP",
+                    "properties": {
+                        "description": "description",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "3389",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 997,
+                        "direction": "Inbound"
+                    }
+                }
+            ]
+        }
+  }
+    ],
+    "outputs": {}
+}
