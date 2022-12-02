@@ -202,34 +202,38 @@
                 ]
             }
         },
-     {
-        "name": "[parameters('nicName')]",
-        "type": "Microsoft.Network/networkInterfaces",
-        "apiVersion": "2020-11-01",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "displayName": "[parameters('nicName')]"
-        },
-        "properties": {
-            "ipConfigurations": [
-                {
-                    "name": "[parameters('ipConfigName')]",
-                    "properties": {
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "[variables('subnetReference')]"
-                        }
-                    },
-                    "publicIPAddress": {
-                        "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('publicIPAddressName'))]"
-                    }
-                }
+        {
+            "name": "[parameters('nicName')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('nicName')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddressName'))]"
             ],
-            "networkSecurityGroup": {
-                "id": "[variables('networkSecurityGroupName')]"
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "[parameters('ipConfigName')]",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[variables('subnetReference')]"
+                            }
+                        },
+                        "publicIPAddress": {
+                            "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddressName'))]"
+                        }
+                    }
+                ],
+                "networkSecurityGroup": {
+                    "id": "[variables('networkSecurityGroupName')]"
+                }
             }
         }
-     }
     ],
     "outputs": {}
 }
