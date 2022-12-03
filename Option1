@@ -85,18 +85,6 @@
                 "description": "Enter Virtual Machine name"
             }
         },
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Enter to set OS admin username"
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Enter to set OS admin password"
-            }
-        },
         "vmSize": {
             "type": "string",
             "metadata": {
@@ -169,6 +157,18 @@
             ],
             "metadata": {
                 "description": "Selected desired Windows version"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter to set OS admin username"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Enter to set OS admin password"
             }
         }  
     },
