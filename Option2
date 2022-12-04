@@ -1,0 +1,3 @@
+
+$azsub = Get-AzSubscription
+
