@@ -1,3 +1,30 @@
+$report = @()
 
-$azsub = Get-AzSubscription
 
+$vm = $getvm
+$nic = $getnic
+
+$getvm = Get-AzVM
+$getnic = Get-AzPublicIpAddress
+
+$vminfo = "" | Select VmID, VmName, VmSize, Os, Power, IP, Tags
+
+$os = $vm.StorageProfile.ImageReference.Offer
+
+$vminfo.VMName = $vm.Name
+$vminfo.VMid = $vm.Id
+$vminfo.VmSize = $vm.HardwareProfile.VmSize
+$vminfo.Os = $os 
+$vminfo.Power =
+$vminfo.IP =
+$vminfo.Tags =
+
+$vminfo.VMName
+$vminfo.VMid
+$vminfo.VmSize
+$vminfo.Os
+$vminfo.Power
+    # ID, Name, SKU, OS, Power State, IP, Tags
+
+
+    
