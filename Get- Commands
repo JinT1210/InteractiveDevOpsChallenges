@@ -1,0 +1,129 @@
+Alias           Get-AzVmssDiskEncryptionStatus                     5.1.1      Az.Compute
+Alias           Get-AzVmssVMDiskEncryptionStatus                   5.1.1      Az.Compute
+Function        Get-AzGalleryApplication                           5.1.1      Az.Compute
+Function        Get-AzGalleryApplicationVersion                    5.1.1      Az.Compute
+Cmdlet          Get-AzAvailabilitySet                              5.1.1      Az.Compute
+Cmdlet          Get-AzCapacityReservation                          5.1.1      Az.Compute
+Cmdlet          Get-AzCapacityReservationGroup                     5.1.1      Az.Compute
+Cmdlet          Get-AzComputeResourceSku                           5.1.1      Az.Compute
+Cmdlet          Get-AzDisk                                         5.1.1      Az.Compute
+Cmdlet          Get-AzDiskAccess                                   5.1.1      Az.Compute
+Cmdlet          Get-AzDiskEncryptionSet                            5.1.1      Az.Compute
+Cmdlet          Get-AzDiskEncryptionSetAssociatedResource          5.1.1      Az.Compute
+Cmdlet          Get-AzGallery                                      5.1.1      Az.Compute
+Cmdlet          Get-AzGalleryImageDefinition                       5.1.1      Az.Compute
+Cmdlet          Get-AzGalleryImageVersion                          5.1.1      Az.Compute
+Cmdlet          Get-AzHost                                         5.1.1      Az.Compute
+Cmdlet          Get-AzHostGroup                                    5.1.1      Az.Compute
+Cmdlet          Get-AzImage                                        5.1.1      Az.Compute
+Cmdlet          Get-AzProximityPlacementGroup                      5.1.1      Az.Compute
+Cmdlet          Get-AzRemoteDesktopFile                            5.1.1      Az.Compute
+Cmdlet          Get-AzRestorePoint                                 5.1.1      Az.Compute
+Cmdlet          Get-AzRestorePointCollection                       5.1.1      Az.Compute
+Cmdlet          Get-AzSnapshot                                     5.1.1      Az.Compute
+Cmdlet          Get-AzSshKey                                       5.1.1      Az.Compute
+Cmdlet          Get-AzVM                                           5.1.1      Az.Compute
+Cmdlet          Get-AzVMAccessExtension                            5.1.1      Az.Compute
+Cmdlet          Get-AzVMADDomainExtension                          5.1.1      Az.Compute
+Cmdlet          Get-AzVMAEMExtension                               5.1.1      Az.Compute
+Cmdlet          Get-AzVMBootDiagnosticsData                        5.1.1      Az.Compute
+Cmdlet          Get-AzVMChefExtension                              5.1.1      Az.Compute
+Cmdlet          Get-AzVMCustomScriptExtension                      5.1.1      Az.Compute
+Cmdlet          Get-AzVMDiagnosticsExtension                       5.1.1      Az.Compute
+Cmdlet          Get-AzVMDiskEncryptionStatus                       5.1.1      Az.Compute
+Cmdlet          Get-AzVMDscExtension                               5.1.1      Az.Compute
+Cmdlet          Get-AzVMDscExtensionStatus                         5.1.1      Az.Compute
+Cmdlet          Get-AzVMExtension                                  5.1.1      Az.Compute
+Cmdlet          Get-AzVMExtensionImage                             5.1.1      Az.Compute
+Cmdlet          Get-AzVMExtensionImageType                         5.1.1      Az.Compute
+Cmdlet          Get-AzVMImage                                      5.1.1      Az.Compute
+Cmdlet          Get-AzVMImageOffer                                 5.1.1      Az.Compute
+Cmdlet          Get-AzVMImagePublisher                             5.1.1      Az.Compute
+Cmdlet          Get-AzVMImageSku                                   5.1.1      Az.Compute
+Cmdlet          Get-AzVMRunCommand                                 5.1.1      Az.Compute
+Cmdlet          Get-AzVMRunCommandDocument                         5.1.1      Az.Compute
+Cmdlet          Get-AzVMSize                                       5.1.1      Az.Compute
+Cmdlet          Get-AzVMSqlServerExtension                         5.1.1      Az.Compute
+Cmdlet          Get-AzVmss                                         5.1.1      Az.Compute
+Cmdlet          Get-AzVmssDiskEncryption                           5.1.1      Az.Compute
+Cmdlet          Get-AzVmssRollingUpgrade                           5.1.1      Az.Compute
+Cmdlet          Get-AzVmssSku                                      5.1.1      Az.Compute
+Cmdlet          Get-AzVmssVM                                       5.1.1      Az.Compute
+Cmdlet          Get-AzVmssVMDiskEncryption                         5.1.1      Az.Compute
+Cmdlet          Get-AzVmssVMRunCommand                             5.1.1      Az.Compute
+Cmdlet          Get-AzVMUsage                                      5.1.1      Az.Compute
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
