@@ -1,13 +1,13 @@
 $report = @()
 
+$getvm = Get-AzVM
+$getnic = Get-AzPublicIpAddress
 
 $vm = $getvm
 $nic = $getnic
 
-$getvm = Get-AzVM
-$getnic = Get-AzPublicIpAddress
 
-$vminfo = "" | Select VmID, VmName, VmSize, Os, Power, IP, Tags
+$vminfo = "" | Select VmID, VmName, VmSize, Os, Power, Ip, VmTags
 
 $os = $vm.StorageProfile.ImageReference.Offer
 
@@ -16,15 +16,17 @@ $vminfo.VMid = $vm.Id
 $vminfo.VmSize = $vm.HardwareProfile.VmSize
 $vminfo.Os = $os 
 $vminfo.Power =
-$vminfo.IP =
-$vminfo.Tags =
+$vminfo.Ip =
+$vminfo.VmTags = $vm.Tags
 
 $vminfo.VMName
 $vminfo.VMid
 $vminfo.VmSize
 $vminfo.Os
 $vminfo.Power
+$vminfo.Ip
+$vminfo.VmTags = $vm.Tags
+$report+=$info
     # ID, Name, SKU, OS, Power State, IP, Tags
 
-
-    
+$report | ft VmID, VmName, VmSize, Os, Power, IP, Tags
