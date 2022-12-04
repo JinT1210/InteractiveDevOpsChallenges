@@ -1,23 +1,18 @@
 $report = @()
 
 $getvm = Get-AzVM
-$getvmstatus = (Get-AzVM -Status).Statuses
+$getvmstatus = (Get-AzVM -Status) | Select-Object powerstate
 $getpip = Get-AzPublicIpAddress
 $getnic = Get-AzNetworkInterface
 
     foreach($nic in $getnic){
         $vminfo = "" | Select-Object VmID, VmName, VmSize, Os, Power, Ip, VmTags
         $vm = $getvm | Where-Object -Property Id -EQ $nic.VirtualMachine.id
-        foreach($vmstatus in $getvmstatus){
-            if($vmstatus.code -notlike "*provisioning*"){
-                $vminfo.Power = $vmstatus.code
-            }
         }
         foreach($pip in $getpip) {
         if($nic.IpConfigurations.id -EQ $pip.ipconfiguration.Id) {
             $vminfo.Ip = $pip.ipaddress
         }
-    }
         $os = $vm.StorageProfile.ImageReference.Offer
         $vminfo.VMName = $vm.Name
         $vminfo.VMid = $vm.Id
@@ -29,4 +24,4 @@ $getnic = Get-AzNetworkInterface
         $report+=$vminfo
         }
 
-$report | Format-Table VmID, VmName, VmSize, Os, Power, IP, VmTags
+$report | Select-Object VmID, VmName, VmSize, Os, Power, IP, VmTags | Export-Csv -Path C:\Output.csv -NoTypeInformation
