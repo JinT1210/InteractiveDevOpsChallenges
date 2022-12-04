@@ -1,32 +1,27 @@
 $report = @()
 
 $getvm = Get-AzVM
-$getnic = Get-AzPublicIpAddress
+$getpip = Get-AzPublicIpAddress
+$getnic = Get-AzNetworkInterface
 
-$vm = $getvm
-$nic = $getnic
-
-
-$vminfo = "" | Select VmID, VmName, VmSize, Os, Power, Ip, VmTags
-
-$os = $vm.StorageProfile.ImageReference.Offer
-
-$vminfo.VMName = $vm.Name
-$vminfo.VMid = $vm.Id
-$vminfo.VmSize = $vm.HardwareProfile.VmSize
-$vminfo.Os = $os 
-$vminfo.Power =
-$vminfo.Ip =
-$vminfo.VmTags = $vm.Tags
-
-$vminfo.VMName
-$vminfo.VMid
-$vminfo.VmSize
-$vminfo.Os
-$vminfo.Power
-$vminfo.Ip
-$vminfo.VmTags = $vm.Tags
-$report+=$info
+    foreach($nic in $getnic){
+        $vminfo = "" | Select VmID, VmName, VmSize, Os, Power, Ip, VmTags
+        $vm = $getvm | Where-Object -Property Id -EQ $nic.VirtualMachine.id
+        foreach($pip in $getpip) {
+        if($nic.IpConfigurations.id -EQ $pip.ipconfiguration.Id) {
+            $vminfo.Ip = $pip.ipaddress
+        }
+    }
+        $os = $vm.StorageProfile.ImageReference.Offer
+        $vminfo.VMName = $vm.Name
+        $vminfo.VMid = $vm.Id
+        $vminfo.VmSize = $vm.HardwareProfile.VmSize
+        $vminfo.Os = $os 
+        $vminfo.Power =
+        $vminfo.Ip = $nic.IpConfigurations.PrivateIpAddress
+        $vminfo.VmTags = $vm.Tags 
+        $report+=$vminfo
+        }
     # ID, Name, SKU, OS, Power State, IP, Tags
 
-$report | ft VmID, VmName, VmSize, Os, Power, IP, Tags
+$report | ft VmID, VmName, VmSize, Os, Power, IP, VmTags
