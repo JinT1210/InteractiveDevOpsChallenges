@@ -26,7 +26,7 @@ steps:
     
 
 - task: CopyFiles@2
-displayName: 'Copy deployment content'
+displayName: 'jinoption3sa'
 inputs: 
     SourceFolder: '$(Build.SourcesDirectory)/deployment'
     contents: '**\*' 
