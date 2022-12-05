@@ -23,3 +23,12 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/public'
+    
+
+- task: CopyFiles@2
+displayName: 'Copy deployment content'
+inputs: 
+    SourceFolder: '$(Build.SourcesDirectory)/deployment'
+    contents: '**\*' 
+    targetFolder: $(Build.ArtifactStagingDirectory)/deployment
+    cleanTargetFolder: true
