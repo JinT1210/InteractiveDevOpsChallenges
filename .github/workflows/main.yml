@@ -22,6 +22,7 @@ jobs:
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
+        creds: ${{ secrets.AZURE_CREDENTIALS1 }}
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name option3-cdn --name option3-cdn-endpoint --resource-group Option3
 
